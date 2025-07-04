@@ -1,0 +1,32 @@
+{
+	"name": "svelte",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/kit": "^2.16.0",
+		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@tsconfig/svelte": "^5.0.4",
+		"svelte": "^5.0.0",
+		"svelte-check": "^4.2.2",
+		"typescript": "^5.8.3",
+		"vite": "^6.2.6"
+	},
+	"dependencies": {
+		"@contentful/rich-text-html-renderer": "^17.0.1",
+		"@contentful/rich-text-types": "^17.0.1",
+		"contentful": "^11.7.3",
+		"contentful-management": "^11.54.0",
+		"dotenv": "^17.0.0",
+		"svelte-carousel": "^1.0.25"
+	}
+}

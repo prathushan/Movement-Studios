@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'Encode-sans-bold';
+  src: url('/DMSans_opsz_wght__1-english.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Encode-sans-regular';
+  src: url('/static/EncodeSansSemiCondensed-Regular_1-english.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+:global(html) {
+    scroll-behavior: smooth;
+  }
+p{
+  font-family: 'Encode-sans-regular', Roboto, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: white;
+    /* font-family: 'MyFont', Roboto, sans-serif; */
+    margin: 0;
+  }
+@media(min-width:750px){
+    h1,h2,h3{
+    font-family: 'Encode-sans-bold', Roboto, sans-serif;
+
+  }
+  h1{
+    font-size:126px;
+    line-height: 113px; 
+  }
+    h2{
+    font-size:62px;
+    line-height: 50px; 
+  }
+
+
+}
+
