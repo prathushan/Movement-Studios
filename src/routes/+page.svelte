@@ -95,23 +95,9 @@
 
 
   /* Banner */
-  .banner {
-    position: sticky;
-    top: 10%;
-    left: 0;
-    width: 100%;
-    height: 600px;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    z-index: -2;
-  }
 
-  .banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+
+
 
   .banner-text {
     position: absolute;
@@ -132,20 +118,48 @@
     /* gap: 4rem; */
   }
 
-  .block-row {
+
+
+    .banner {
+    position: sticky;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    z-index: -2;
+  }
+        .block-row {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    align-items: center;
+
     justify-content: center;
     background-color: #000000;
-    padding: 50px 1.5rem;
-    min-height: 100vh;
+
     position: sticky;
     top: 0;
     z-index: 1;
+     min-height: 100vh;
   }
 
+
+@media(min-width:750px){
+          .block-row {
+    align-items: center;
+
+    padding: 50px 1.5rem;
+    /* min-height: 100vh; */
+
+  }
+
+
+
+      .banner {
+    height: 600px;
+
+  }
   .block-row.left-image .block-img {
     order: 1;
   }
@@ -161,17 +175,35 @@
   .block-row.right-image .block-text {
     order: 1;
   }
-
-  .block-img {
-    flex: 1 1 45%;
-    position: relative;
-  }
-
-  .block-img img {
+    .block-img img {
     width: 100%;
     height: 800px;
     object-fit: cover;
     border-radius: 8px;
+  }
+  .banner img {
+
+    object-fit: cover;
+  }
+      .block-img {
+    flex: 1 1 45%;
+  }
+
+}
+  .banner img {
+    width: 100%;
+    height: 100%;
+
+  }
+    .block-img {
+
+    position: relative;
+  }
+
+
+  .block-img img {
+    width: 100%;
+
   }
 
   .block-title-overlay {
@@ -220,18 +252,30 @@
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
   }
 
+
   @media (max-width: 768px) {
+        .block-row {
+    align-items: top;
+    padding: 20px 10px;
+    /* min-height: 80vh; */
+
+  }
     .block-row {
       flex-direction: column;
     }
 
     .block-img,
     .block-text {
-      flex: 1 1 100%;
+      /* flex: 1 1 100%; */
     }
+      .banner img {
+object-fit: contain;
+
+  }
 
     .block-img img {
-      height: 300px;
+      height: 400px;
+      object-fit: cover;
     }
 
     .banner-text {
@@ -242,6 +286,12 @@
     .block-title-overlay {
       font-size: 2rem;
     }
+      .block-text {
+
+    line-height: 40px;
+
+
+  }
   }
   .bg-color{
     background-color: #000;

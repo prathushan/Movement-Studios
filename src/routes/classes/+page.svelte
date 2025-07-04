@@ -5,73 +5,82 @@
   console.log("✅ Classes Page Data:", classes);
 
   // Log individual class fields
-  classes.classBooking.forEach((item, i) => {
-    console.log(`📦 Class ${i + 1}:`, item.fields);
-  });
+  // classes.classBooking.forEach((item, i) => {
+  //   console.log(📦 Class ${i + 1}:, item.fields);
+  // });
+
+  // Format a 2-hour time range from the given class start time
+  function formatTimeRange(startTimeStr: string): string {
+    const startTime = new Date(startTimeStr);
+    const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000); // +2 hours
+
+    const options: Intl.DateTimeFormatOptions = {
+      hour: 'numeric',
+      minute: '2-digit',
+    };
+
+   return `${startTime.toLocaleTimeString('en-US', options)} – ${endTime.toLocaleTimeString('en-US', options)}`;
+  }
 </script>
 
 {#if classes}
   <!-- 🎯 Banner Section -->
   <section class="classes-banner">
-    <img src={`https:${classes.classesBanner?.fields?.file?.url}`} alt="Classes Banner" />
+   <img src={"https:" + classes.classesBanner?.fields?.file?.url} alt="Classes Banner" />
+
     <div class="classes-title">
       <h1>{classes.classes}</h1>
     </div>
   </section>
 {/if}
 
-<!-- 📚 Class Booking Grid -->
 {#if classes.classBooking?.length}
-<section class="booking-experience">
-  <div class="left-panel">
-    <h2>Booking Experience<br />for Classes</h2>
-  </div>
-
-  <div class="right-panel">
-    <div class="class-cards">
-      {#each classes.classBooking as cls (cls.sys.id)}
-        <div class="class-card">
-          <div class="image-container">
-            <img src={`https:${cls.fields.classImage?.fields?.file?.url}`} alt={cls.fields.classImage?.fields?.title} />
-            <span class="class-label">{cls.fields.className}</span>
-          </div>
-
-          <div class="card-details">
-            <div class="text-content">
-              <h3>{cls.fields.classTitle}</h3>
-              <p>{cls.fields.classDescription}</p>
-            </div>
-
-            <div class="card-footer">
-              <a class="timing">
-                {#if cls.fields.classTimings}
-                  {new Date(cls.fields.classTimings).toLocaleTimeString('en-US', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })} – 9:00PM
-                {/if}
-              </a>
-              {#if cls.fields.booknowButton}
-                <button class="book-btn">{cls.fields.booknowButton}</button>
-              {/if}
-            </div>
-          </div>
-        </div>
-      {/each}
+  <!-- 📚 Class Booking Grid -->
+  <section class="booking-experience">
+    <div class="left-panel">
+      <h2>Booking Experience<br />for Classes</h2>
     </div>
-  </div>
-</section>
 
+    <div class="right-panel">
+      <div class="class-cards">
+        {#each classes.classBooking as cls (cls.sys.id)}
+          <div class="class-card">
+            <div class="image-container">
+             <img src={`https:${cls.fields.classImage?.fields?.file?.url}`} alt={cls.fields.classImage?.fields?.title} />
+              <span class="class-label">{cls.fields.className}</span>
+            </div>
 
+            <div class="card-details">
+              <div class="text-content">
+                <h3>{cls.fields.classTitle}</h3>
+                <p>{cls.fields.classDescription}</p>
+              </div>
+
+              <div class="card-footer">
+                <a class="timing">
+                  {#if cls.fields.classTimings}
+                    {formatTimeRange(cls.fields.classTimings)}
+                  {/if}
+                </a>
+                {#if cls.fields.booknowButton}             
+                    <button class="book-btn"><a class="rm-anch-text-dec" href="/contact">{cls.fields.booknowButton}</a></button>
+                {/if}
+              </div>
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
 {/if}
 
-
-<!-- 💬 Promise Section -->
 {#if classes.promise || classes.promiseText}
+  <!-- 💬 Promise Section -->
   <section class="promise-section">
     <div class="promise-content">
       {#if classes.promise}
-        <img src={`https:${classes.promise.fields.file.url}`} alt={classes.promise.fields.title} />
+      <img src={`https:${classes.classesBanner?.fields?.file?.url}`} alt="Classes Banner" />
+
       {/if}
 
       <div class="promise-text">
@@ -80,6 +89,7 @@
     </div>
   </section>
 {/if}
+
 
 <style>
   .classes-banner {
@@ -327,3 +337,6 @@
 }
 
 </style>
+
+
+

@@ -1,5 +1,6 @@
 // src/routes/contact/api/+server.ts
-import { env } from '$env/static/private';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import type { RequestHandler } from '@sveltejs/kit';
 import contentfulManagement from 'contentful-management';
@@ -10,8 +11,8 @@ export const POST: RequestHandler = async ({ request }) => {
   const { name, email, company, phone, message } = await request.json();
   const sanitizedPhone = phone?.toString?.() ?? '';
 
-  const spaceId = env.CONTENTFUL_SPACE_ID;
-  const token = env.CONTENTFUL_MANAGEMENT_TOKEN;
+  const spaceId = process.env.CONTENTFUL_SPACE_ID;
+  const token = process.env.CONTENTFUL_MANAGEMENT_TOKEN;
 
   if (!spaceId || !token) {
     console.error('❌ Missing Contentful environment variables');
