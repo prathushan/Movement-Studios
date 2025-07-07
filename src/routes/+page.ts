@@ -10,7 +10,7 @@ export const load: PageLoad = async () => {
 
   const home = res.items[0].fields;
 
-  console.log('🧩 Home Fields:', JSON.stringify(home, null, 2));
+  // console.log('🧩 Home Fields:', JSON.stringify(home, null, 2));
 
   const resolveLinks = (refs: any[] = []) =>
     refs.map((ref: any) => {

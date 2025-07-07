@@ -1,46 +1,51 @@
 <script lang="ts">
   export let data;
-  let name = '', email = '', company = '',phone = '', message = '';
+  let name = "",
+    email = "",
+    company = "",
+    phone = "",
+    message = "";
   let isSubmitting = false;
-  let feedback = '';
+  let feedback = "";
 
   const faq = data.faq;
 
   async function handleSubmit() {
     isSubmitting = true;
-    feedback = '';
+    feedback = "";
     try {
-      const res = await fetch('/contact/api', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, company,phone, message }),
+      const res = await fetch("/contact/api", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, company, phone, message }),
       });
 
-      if (!res.ok) throw new Error('Something went wrong.');
+      if (!res.ok) throw new Error("Something went wrong.");
 
-      feedback = '✅ Message sent successfully!';
-      name = email = company=phone = message = '';
+      feedback = "✅ Message sent successfully!";
+      name = email = company = phone = message = "";
     } catch (err) {
-      feedback = '❌ Failed to send message. Try again.';
-      console.error('Submit error:', err);
+      feedback = "❌ Failed to send message. Try again.";
+      console.error("Submit error:", err);
     } finally {
       isSubmitting = false;
     }
   }
 </script>
 
-
 <form on:submit|preventDefault={handleSubmit} class="contact-glass-form">
   <h2>Get in Touch</h2>
   <div class="field-group">
     <input type="text" placeholder="Name *" bind:value={name} required />
     <input type="text" placeholder="dance Style" bind:value={company} />
-    <input type="number" placeholder="Phone Number" bind:value={phone} />
+    <input type="text" placeholder="Phone Number" bind:value={phone} />
+
+    <input type="email" placeholder="Email *" bind:value={email} required />
+    <textarea placeholder="Your Message *" bind:value={message} required
+    ></textarea>
   </div>
-  <input type="email" placeholder="Email *" bind:value={email} required />
-  <textarea placeholder="Your Message *" bind:value={message} required></textarea>
   <button type="submit" disabled={isSubmitting}>
-    {isSubmitting ? 'Sending...' : 'Send Message'}
+    {isSubmitting ? "Sending..." : "Send Message"}
   </button>
   {#if feedback}
     <p class="feedback">{feedback}</p>
@@ -60,17 +65,9 @@
   </section>
 {/if}
 
-
-
 <style>
-  body {
-    background: linear-gradient(135deg, #1e1e2f, #2b2b3c);
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-
   .contact-glass-form {
+    box-sizing: border-box;
     max-width: 500px;
     margin: 3rem auto;
     padding: 2rem;
@@ -130,7 +127,9 @@
     font-weight: 600;
     cursor: pointer;
     margin-top: 1rem;
-    transition: background 0.3s ease, transform 0.2s;
+    transition:
+      background 0.3s ease,
+      transform 0.2s;
   }
 
   button:hover:not(:disabled) {
@@ -149,7 +148,6 @@
     font-weight: 500;
     color: #ffd6ec;
   }
-
 
   /* FAQ */
   .faqs {
@@ -179,5 +177,13 @@
   .faqs p {
     margin-top: 0.5rem;
     color: #aaa;
+  }
+  @media (max-width: 480px) {
+    .contact-glass-form {
+      margin: 3rem 0.5rem;
+    }
+    .faqs {
+      margin: 0.5rem;
+    }
   }
 </style>

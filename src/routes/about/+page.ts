@@ -1,5 +1,4 @@
-// src/routes/about/+page.ts
-import { client } from '$lib/contentful'; // or wherever your contentful client is
+import { client } from '$lib/contentful'; 
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
@@ -9,9 +8,6 @@ export const load: PageLoad = async () => {
   });
 
   const about = res.items[0]?.fields;
-
-  console.log('🧩 About Fields:', about); // Add this to confirm data is fetched
-
   return {
     about
   };

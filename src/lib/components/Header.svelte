@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from "$app/stores";
+  import "../../app.css";
 
   let isMenuOpen = false;
   $: currentPath = $page.url.pathname;
@@ -20,17 +21,29 @@
     <div class="mobile-top-row">
       <div class="site-name"><a href="/">Movement Studios.</a></div>
       <button class="hamburger" on:click={toggleMenu} aria-label="Toggle Menu">
-        <i class={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
+        <i class={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
       </button>
     </div>
 
     <!-- Navigation & Site Name for Desktop -->
     <div class="desktop-row">
       <nav class="nav-links">
-        <a href="/" class="nav-link" class:active={currentPath === '/'}>Home</a>
-        <a href="/about" class="nav-link" class:active={currentPath === '/about'}>About</a>
-        <a href="/classes" class="nav-link" class:active={currentPath === '/classes'}>Classes</a>
-        <a href="/contact" class="nav-link" class:active={currentPath === '/contact'}>Contact</a>
+        <a href="/" class="nav-link" class:active={currentPath === "/"}>Home</a>
+        <a
+          href="/about"
+          class="nav-link"
+          class:active={currentPath === "/about"}>About</a
+        >
+        <a
+          href="/classes"
+          class="nav-link"
+          class:active={currentPath === "/classes"}>Classes</a
+        >
+        <a
+          href="/contact"
+          class="nav-link"
+          class:active={currentPath === "/contact"}>Contact</a
+        >
       </nav>
       <div class="site-name desktop"><a href="/">Movement Studios.</a></div>
     </div>
@@ -38,10 +51,30 @@
     <!-- Mobile Nav Menu -->
     {#if isMenuOpen}
       <nav class="mobile-menu">
-        <a href="/" class="nav-link" class:active={currentPath === '/'} on:click={() => isMenuOpen = false}>Home</a>
-        <a href="/about" class="nav-link" class:active={currentPath === '/about'} on:click={() => isMenuOpen = false}>About</a>
-        <a href="/classes" class="nav-link" class:active={currentPath === '/classes'} on:click={() => isMenuOpen = false}>Classes</a>
-        <a href="/contact" class="nav-link" class:active={currentPath === '/contact'} on:click={() => isMenuOpen = false}>Contact</a>
+        <a
+          href="/"
+          class="nav-link"
+          class:active={currentPath === "/"}
+          on:click={() => (isMenuOpen = false)}>Home</a
+        >
+        <a
+          href="/about"
+          class="nav-link"
+          class:active={currentPath === "/about"}
+          on:click={() => (isMenuOpen = false)}>About</a
+        >
+        <a
+          href="/classes"
+          class="nav-link"
+          class:active={currentPath === "/classes"}
+          on:click={() => (isMenuOpen = false)}>Classes</a
+        >
+        <a
+          href="/contact"
+          class="nav-link"
+          class:active={currentPath === "/contact"}
+          on:click={() => (isMenuOpen = false)}>Contact</a
+        >
       </nav>
     {/if}
   </div>
@@ -52,7 +85,7 @@
   .site-header {
     background-color: #000;
     color: white;
-    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-family: "Segoe UI", Roboto, sans-serif;
     position: sticky;
     top: 0;
     z-index: 1000;

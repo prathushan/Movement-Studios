@@ -1,36 +1,34 @@
 <script lang="ts">
   export let data;
   const { about } = data;
-
-  console.log("✅ About Page Data:", about);
-  console.log("🧪 Founders:", about.aboutFounders);
-  console.log("🧪 Instructors:", about.instructors);
 </script>
 
 {#if about}
-  <!-- Banner Section -->
   <section class="about-banner">
-    <img src={`https:${about.aboutBanner?.fields?.file?.url}`} alt="About Banner" />
+    <img
+      src={`https:${about.aboutBanner?.fields?.file?.url}`}
+      alt="About Banner"
+    />
     <div class="about-title">
       <h1>{about.aboutTitle}</h1>
     </div>
   </section>
 {/if}
 
-
-
-<!-- Founders Grid Section -->
 {#if about.aboutFounders?.length}
   <section class="founders-grid">
     <div class="founders-grid-container">
       <div class="founders-title">
-        <h2>Our<br />Founders</h2>
+        <h2><span class="abt-dis-blk">Our</span> Founders</h2>
       </div>
 
       {#each about.aboutFounders as founder, i (founder.sys.id)}
         <div class="founder-image">
-          <img src={`https:${founder.fields.file.url}`} alt={founder.fields.title || `Founder ${i + 1}`} />
-          <p>{founder.fields.title || 'Unnamed'}</p>
+          <img
+            src={`https:${founder.fields.file.url}`}
+            alt={founder.fields.title || `Founder ${i + 1}`}
+          />
+          <p>{founder.fields.title || "Unnamed"}</p>
         </div>
       {/each}
     </div>
@@ -42,7 +40,7 @@
   <section class="instructors-section">
     <div class="instructors-grid">
       <!-- Left Column -->
-      <div class="instructors-title">
+      <div class="founders-title">
         <h2>Instructors</h2>
       </div>
 
@@ -63,16 +61,16 @@
 {#if about.text?.content}
   <section class="about-content">
     <div class="text-container">
-      {@html about.text.content.map(item => item.content?.[0]?.value).join('<br>')}
+      {@html about.text.content
+        .map((item) => item.content?.[0]?.value)
+        .join("<br>")}
     </div>
   </section>
 {/if}
+
 <style>
-  :global(body) {
-    margin: 0;
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    background-color: #000;
-    color: #fff;
+  .abt-dis-blk {
+    display: block;
   }
 
   .about-banner {
@@ -99,37 +97,26 @@
   }
 
   .about-content {
-  padding: 3rem 1.5rem;
-  max-width:100%;
-  margin: 0 auto;
-  background-color: #ff4081;
-  color: #000;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin:0;
+    padding: 3rem 1.5rem;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #ff4081;
+    color: #000;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
   }
 
-.text-container {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  color: #000;
-  text-align: center;
-  word-break: break-word;
-  white-space: normal;
-  max-width: 100%;
-}
-
-
-  .text-container h2,
-  .text-container h3 {
-    color: #ff4081;
-    margin-top: 2rem;
-  }
-
-  .text-container p {
-    margin-bottom: 1rem;
+  .text-container {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #000;
+    text-align: center;
+    word-break: break-word;
+    white-space: normal;
+    max-width: 100%;
   }
 
   /* Founders Section */
@@ -185,7 +172,7 @@
   /* ✅ Instructors Section */
   .instructors-section {
     background-color: #000;
-    padding: 3rem 1rem;
+    padding: 0 1rem 3rem 1rem;
     color: white;
   }
 
@@ -194,18 +181,8 @@
     grid-template-columns: 30% 70%;
     max-width: 1200px;
     margin: auto;
-    gap: 2rem;
+    /* gap: 2rem; */
     align-items: flex-start;
-  }
-
-  .instructors-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ff4081;
-    text-align: center;
   }
 
   .instructors-cards {
@@ -251,13 +228,18 @@
       grid-template-columns: 1fr;
     }
 
-    .instructors-title {
-      margin-bottom: 2rem;
-      font-size: 2rem;
-    }
-
     .about-title {
       font-size: 1.8rem;
+    }
+    .founders-title {
+      font-size: 1.5rem;
+    }
+    .founders-title h2 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+    .abt-dis-blk {
+      display: inline;
     }
   }
 </style>
