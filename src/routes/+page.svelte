@@ -1,6 +1,6 @@
 <script lang="ts">
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-  import { contentfulImage } from "$lib/utils/image";
+  // import { contentfulImage } from "$lib/utils/image";
   import "../app.css";
 
   export let data;
@@ -11,14 +11,14 @@
     block = [],
     imageSlider = [],
   } = data.home;
-  
-  //   function contentfulImage(
-  //   url: string,
-  //   width = 800,
-  //   format: "webp" | "jpg" = "webp"
-  // ) {
-  //   return `https:${url}?w=${width}&fm=${format}`;
-  // }
+
+    function contentfulImage(
+    url: string,
+    width = 800,
+    format: "webp" | "jpg" = "webp"
+  ) {
+    return `https:${url}?w=${width}&fm=${format}`;
+  }
 </script>
 
 <svelte:head>
@@ -37,6 +37,7 @@
     <img
       src={contentfulImage(bannerImage.fields.file.url, 1200)}
       srcset={`
+      ${contentfulImage(bannerImage.fields.file.url, 400)} 400w,
         ${contentfulImage(bannerImage.fields.file.url, 600)} 600w,
         ${contentfulImage(bannerImage.fields.file.url, 1200)} 1200w
       `}

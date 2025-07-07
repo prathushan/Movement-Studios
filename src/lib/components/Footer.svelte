@@ -42,7 +42,7 @@
       >Our Classes</a
     >
     <a
-      href=""
+      href="mailto:admin@movementstudio.com"
       class="footer-box black"
       on:click|preventDefault={openMail}
       title="Email us">Email Us</a
@@ -87,7 +87,6 @@
     line-height: 1;
   }
 
-  .footer-middle p,
   .footer-right p {
     font-size: 0.95rem;
     margin: 0.6rem 0;
@@ -134,7 +133,7 @@
   }
 
   .footer-box.pink {
-    background-color: #cc45eb;
+    background-color: #224aff;
   }
 
   @media (max-width: 768px) {

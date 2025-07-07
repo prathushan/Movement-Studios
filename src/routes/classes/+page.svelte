@@ -91,11 +91,11 @@
               </div>
 
               <div class="card-footer">
-                <a class="timing">
+                <span class="timing">
                   {#if cls.fields.classTimings}
                     {formatTimeRange(cls.fields.classTimings)}
                   {/if}
-                </a>
+                </span>
                 {#if cls.fields.booknowButton}
                   <button class="book-btn">
                     <a class="rm-anch-text-dec" href="/contact"
