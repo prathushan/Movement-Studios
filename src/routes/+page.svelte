@@ -246,6 +246,10 @@
       font-size: 2rem;
       left: 2rem;
     }
+     .banner-text {
+    top:43%;
+    left:27%; 
+    }
 
     .block-title-overlay {
       font-size: 2rem;
@@ -256,5 +260,13 @@
   }
   .bg-color {
     background-color: #000;
+  }
+
+  @media(min-width:400px) and (max-width:480px){
+    .slider-section{
+    position: relative;
+    z-index: 10;
+    margin-top: -160px;
+    }
   }
 </style>

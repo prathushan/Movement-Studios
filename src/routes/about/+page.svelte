@@ -8,6 +8,7 @@
     <img
       src={`https:${about.aboutBanner?.fields?.file?.url}`}
       alt="About Banner"
+      loading="eager"
     />
     <div class="about-title">
       <h1>{about.aboutTitle}</h1>
@@ -26,7 +27,7 @@
         <div class="founder-image">
           <img
             src={`https:${founder.fields.file.url}`}
-            alt={founder.fields.title || `Founder ${i + 1}`}
+            alt={founder.fields.title || `Founder ${i + 1}`} loading="lazy"
           />
           <p>{founder.fields.title || "Unnamed"}</p>
         </div>
