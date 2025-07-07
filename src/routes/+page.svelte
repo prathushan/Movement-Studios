@@ -1,6 +1,8 @@
 <script lang="ts">
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+  import { contentfulImage } from "$lib/utils/image";
   import "../app.css";
+
   export let data;
 
   const {
@@ -9,28 +11,66 @@
     block = [],
     imageSlider = [],
   } = data.home;
+  
+  //   function contentfulImage(
+  //   url: string,
+  //   width = 800,
+  //   format: "webp" | "jpg" = "webp"
+  // ) {
+  //   return `https:${url}?w=${width}&fm=${format}`;
+  // }
 </script>
 
-<!-- Banner Section -->
+<svelte:head>
+  {#if bannerImage?.fields?.file?.url}
+    <link
+      rel="preload"
+      as="image"
+      href={contentfulImage(bannerImage.fields.file.url, 1200)}
+    />
+  {/if}
+</svelte:head>
+
+<!-- 🖼️ Banner Section -->
 <section class="banner">
   {#if bannerImage?.fields?.file?.url}
-    <img src={"https:" + bannerImage.fields.file.url} alt={titleInHomePage} />
+    <img
+      src={contentfulImage(bannerImage.fields.file.url, 1200)}
+      srcset={`
+        ${contentfulImage(bannerImage.fields.file.url, 600)} 600w,
+        ${contentfulImage(bannerImage.fields.file.url, 1200)} 1200w
+      `}
+      sizes="(max-width: 768px) 100vw, 100vw"
+      alt={titleInHomePage}
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
     <div class="banner-text">
       <h1>{titleInHomePage}</h1>
     </div>
   {/if}
 </section>
+
 <div class="bg-color">
   <div class="scroll-content">
-    <!-- Alternating Block Layout -->
+    <!-- 🧱 Alternating Block Layout -->
     {#if block.length}
       <section class="blocks">
         {#each block as item, i}
           <div class="block-row {i % 2 === 0 ? 'left-image' : 'right-image'}">
             <div class="block-img">
               <img
-                src={`https:${item.fields.blockImg.fields.file.url}`}
+                src={contentfulImage(item.fields.blockImg.fields.file.url, 800)}
+                srcset={`
+                  ${contentfulImage(item.fields.blockImg.fields.file.url, 400)} 400w,
+                  ${contentfulImage(item.fields.blockImg.fields.file.url, 800)} 800w,
+                  ${contentfulImage(item.fields.blockImg.fields.file.url, 1200)} 1200w
+                `}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 alt={item.fields.title}
+                loading="lazy"
+                decoding="async"
               />
               <h2 class="block-title-overlay">{item.fields.title}</h2>
             </div>
@@ -42,29 +82,27 @@
       </section>
     {/if}
 
+    <!-- 🎞️ Image Slider Section -->
     {#if imageSlider.length}
       <section class="slider-section">
         <h2>Gallery</h2>
         <div class="slider">
           {#each imageSlider as img (img.sys.id)}
             <picture>
-              <!-- WebP source -->
               <source
                 srcset={`
-              https:${img.fields.file.url}?fm=webp&w=400 400w,
-              https:${img.fields.file.url}?fm=webp&w=800 800w
-            `}
+                  ${contentfulImage(img.fields.file.url, 400)} 400w,
+                  ${contentfulImage(img.fields.file.url, 800)} 800w
+                `}
                 sizes="(max-width: 768px) 400px, 800px"
                 type="image/webp"
               />
-
-              <!-- Default format fallback -->
               <img
-                src={`https:${img.fields.file.url}?w=800`}
+                src={contentfulImage(img.fields.file.url, 800, 'jpg')}
                 srcset={`
-              https:${img.fields.file.url}?w=400 400w,
-              https:${img.fields.file.url}?w=800 800w
-            `}
+                  ${contentfulImage(img.fields.file.url, 400, 'jpg')} 400w,
+                  ${contentfulImage(img.fields.file.url, 800, 'jpg')} 800w
+                `}
                 sizes="(max-width: 768px) 400px, 800px"
                 alt={img.fields.title || "Slider Image"}
                 loading="lazy"
@@ -79,6 +117,7 @@
     {/if}
   </div>
 </div>
+
 
 <style>
   :global(html) {

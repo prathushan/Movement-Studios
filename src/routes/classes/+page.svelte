@@ -364,7 +364,9 @@
 
   @media (max-width: 480px) {
     .promise-content img {
-      max-width: 410px;
+      /* max-width: auto; */
+      max-width:100%;
+    width:auto;
     }
   }
 </style>

@@ -5,12 +5,11 @@ import type { PageLoad } from './$types';
 export const load: PageLoad = async () => {
   const res = await client.getEntries({
     content_type: 'home',
-    include: 2, // Important to fetch nested references
+    include: 2,
   });
 
   const home = res.items[0].fields;
 
-  // console.log('🧩 Home Fields:', JSON.stringify(home, null, 2));
 
   const resolveLinks = (refs: any[] = []) =>
     refs.map((ref: any) => {
@@ -23,8 +22,7 @@ export const load: PageLoad = async () => {
   return {
     home: {
       ...home,
-      blocks: resolveLinks(home.block || []), // ❗field is likely named `block` not `blocks`
-      // faq: resolveLinks(home.faqQuestions || []), // 👈 match field name from Contentful
+      blocks: resolveLinks(home.block || []), 
       imageSlider: home.imageSlider || [],
     }
   };

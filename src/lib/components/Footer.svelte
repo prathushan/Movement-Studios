@@ -19,34 +19,12 @@
     </div>
 
     <div class="footer-middle">
-      <p>
-        <strong>Email:</strong><br />
-        <a href="mailto:admin@movementstudio.com" title="Email us"
-          >admin@movementstudio.com</a
-        >
-      </p>
-      <p>
-        <strong>Instagram:</strong><br />
-        <a
-          href="https://www.instagram.com/movementstudio/"
-          target="_blank"
-          rel="noopener"
-          title="Visit our Instagram"
-        >
-          instagram.com/movementstudio
-        </a>
-      </p>
-      <p>
-        <strong>Facebook:</strong><br />
-        <a
-          href="https://www.facebook.com/movementstudio/"
-          target="_blank"
-          rel="noopener"
-          title="Visit our Facebook"
-        >
-          facebook.com/movementstudio
-        </a>
-      </p>
+      <div class="fot-dis-blck">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/classes">Classes</a>
+        <a href="/contact">Contact</a>
+      </div>
     </div>
 
     <div class="footer-right">
@@ -79,6 +57,11 @@
   .site-footer {
     background-color: #f8f8f8;
     color: #000;
+  }
+  .fot-dis-blck{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
   }
 
   .footer-top {
