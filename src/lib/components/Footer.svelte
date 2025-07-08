@@ -15,7 +15,7 @@
 <footer class="site-footer">
   <div class="footer-top">
     <div class="footer-left">
-      <h1 class="footer-logo-text">Mov.<br />Stu.</h1>
+      <h1 class="footer-logo-text"><a href="/">Mov.<br />Stu.</a></h1>
     </div>
 
     <div class="footer-middle">
@@ -62,6 +62,11 @@
     display: flex;
     flex-direction: column;
     gap:10px;
+  }
+  .footer-logo-text a{
+    text-decoration: none;
+    color:#000;
+
   }
 
   .footer-top {

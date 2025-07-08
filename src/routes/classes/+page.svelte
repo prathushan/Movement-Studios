@@ -124,7 +124,7 @@
             ${contentfulImage(classes.promise.fields.file.url, 800)} 800w
           `}
           sizes="(max-width: 768px) 100vw, 50vw"
-          alt="Promise Image"
+          alt="Promise Dance style"
           loading="lazy"
         />
       {/if}
@@ -186,8 +186,8 @@
   }
 
   .promise-section {
-    background-color: #ff4081;
-    color: black;
+    background-color: #224aff;
+    color: #fff;
     padding: 3rem 10px;
   }
 
@@ -284,7 +284,7 @@
     left: 10px;
     font-size: 5rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.8);
+    color: #000;
   }
 
   .card-details {

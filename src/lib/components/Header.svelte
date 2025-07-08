@@ -10,10 +10,10 @@
   }
 </script>
 
-<link
+<!-- <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
+/> -->
 
 <header class="site-header">
   <div class="header-container">
@@ -21,7 +21,32 @@
     <div class="mobile-top-row">
       <div class="site-name"><a href="/">Movement Studios.</a></div>
       <button class="hamburger" on:click={toggleMenu} aria-label="Toggle Menu">
-        <i class={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
+        {#if isMenuOpen}
+          <!-- CLOSE ICON (X) -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+            fill="#fff"
+            height="20px"
+            width="22px"
+          >
+            <path
+              d="M231 256L384 103c9-9 9-24 0-33l-22-22c-9-9-24-9-33 0L176 201 23 48c-9-9-24-9-33 0L-32 70c-9 9-9 24 0 33l153 153L-32 409c-9 9-9 24 0 33l22 22c9 9 24 9 33 0l153-153 153 153c9 9 24 9 33 0l22-22c9-9 9-24 0-33L231 256z"
+            />
+          </svg>
+        {:else}
+          <!-- HAMBURGER ICON -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            fill="#fff"
+            height="20px"
+          >
+            <path
+              d="M0 96C0 78.3 14.3 64 32 64h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zm0 160c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zm416 160c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h384z"
+            />
+          </svg>
+        {/if}
       </button>
     </div>
 
@@ -85,7 +110,6 @@
   .site-header {
     background-color: #000;
     color: white;
-    font-family: "Segoe UI", Roboto, sans-serif;
     position: sticky;
     top: 0;
     z-index: 1000;

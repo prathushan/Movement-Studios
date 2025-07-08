@@ -1,7 +1,5 @@
 <script lang="ts">
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-  // import { contentfulImage } from "$lib/utils/image";
-  import "../app.css";
 
   export let data;
 
@@ -233,7 +231,7 @@
     font-size: 20px;
     line-height: 30px;
     color: #eee;
-    font-family: "Encode-sans-regular", sans-serif;
+    /* font-family: "Encode-sans-regular", sans-serif; */
     font-weight: 400;
     letter-spacing: -0.34px;
   }
