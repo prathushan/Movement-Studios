@@ -1,7 +1,7 @@
 <script>
   function openMail() {
-    const email = "admin@movementstudio.com";
-    const subject = "Hello from Movement Studio";
+    const email = "admin@mymovementstudio.com";
+    const subject = "Hello from My Movement Studio";
     const body = "Hi there, I'd like to get in touch...";
 
     const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -33,7 +33,7 @@
         224 Candyland Lane, Brooklyn, NY
       </p>
       <p><a href="tel:+16465554567" title="Call us">(646) 555-4567</a></p>
-      <p>&copy; 2025 Movement Studios®<br />All Rights Reserved</p>
+      <p>&copy; 2025 My Movement Studio®<br />All Rights Reserved</p>
     </div>
   </div>
 
@@ -42,7 +42,7 @@
       >Our Classes</a
     >
     <a
-      href="mailto:admin@movementstudio.com"
+      href="mailto:admin@mymovementstudio.com"
       class="footer-box black"
       on:click|preventDefault={openMail}
       title="Email us">Email Us</a
