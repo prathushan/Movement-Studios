@@ -19,7 +19,7 @@
   <div class="header-container">
     <!-- Hamburger & Site Name (Mobile Top Row) -->
     <div class="mobile-top-row">
-      <div class="site-name"><a href="/">Movement Studios.</a></div>
+      <div class="site-name"><a href="/">My Movement Studio.</a></div>
       <button class="hamburger" on:click={toggleMenu} aria-label="Toggle Menu">
         {#if isMenuOpen}
           <!-- CLOSE ICON (X) -->
@@ -70,7 +70,7 @@
           class:active={currentPath === "/contact"}>Contact</a
         >
       </nav>
-      <div class="site-name desktop"><a href="/">Movement Studios.</a></div>
+      <div class="site-name desktop"><a href="/">My Movement Studio.</a></div>
     </div>
 
     <!-- Mobile Nav Menu -->
